@@ -738,14 +738,15 @@ footer {
   font-size: 1.05rem !important;
   color: #C8A85E !important;
 }
-/* Hide icons, rectangles, default Brevo heading/description, hidden inputs */
-.sib-icon.sib-notification__icon { display: none !important; }
+/* Hide only Brevo default title and description blocks, not input blocks */
+#sib-form > div:nth-child(1),
+#sib-form > div:nth-child(2) { display: none !important; }
+.sib-text-form-block { display: none !important; }
 .entry__error { display: none !important; }
 .entry__specification { display: none !important; }
 .input--hidden { display: none !important; }
-.sib-form-block:first-child { display: none !important; }
-.sib-text-form-block { display: none !important; }
 .sib-hide-loader-icon { display: none !important; }
+.sib-icon.sib-notification__icon { display: none !important; }
 #sib-container {
   background: transparent !important;
   border: 1px solid rgba(200,168,94,0.35) !important;
