@@ -706,7 +706,46 @@ footer {
   line-height: 1.7;
 }
 
-/* ── Brevo form overrides ────────────────────────────────────── */
+/* ── Brevo message panel overrides ───────────────────────────── */
+#error-message.sib-form-message-panel,
+#success-message.sib-form-message-panel {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  max-width: 460px !important;
+  margin: 0 auto !important;
+  padding: 16px 0 !important;
+  visibility: hidden !important;
+}
+#error-message.sib-form-message-panel[style*="block"],
+#success-message.sib-form-message-panel[style*="block"] {
+  visibility: visible !important;
+}
+#error-message .sib-form-message-panel__text,
+#success-message .sib-form-message-panel__text {
+  background: transparent !important;
+  padding: 0 !important;
+}
+#error-message .sib-form-message-panel__inner-text {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 1rem !important;
+  color: #ffeded !important;
+}
+#success-message .sib-form-message-panel__inner-text {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  color: #C8A85E !important;
+}
+/* Hide icons, rectangles, default Brevo heading/description, hidden inputs */
+.sib-icon.sib-notification__icon { display: none !important; }
+.entry__error { display: none !important; }
+.entry__specification { display: none !important; }
+.input--hidden { display: none !important; }
+.sib-form-block:first-child { display: none !important; }
+.sib-text-form-block { display: none !important; }
+.sib-hide-loader-icon { display: none !important; }
 #sib-container {
   background: transparent !important;
   border: 1px solid rgba(200,168,94,0.35) !important;
