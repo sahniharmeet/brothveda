@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RASA by BrothVeda — Coming Soon</title>
 <meta name="description" content="India's first clinically formulated chicken bone broth. Vedic Roots. Scientific Healing. Coming soon.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%234A1515'/><text y='72' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23C8A85E'>B</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -706,7 +707,21 @@ footer {
   line-height: 1.7;
 }
 
-/* ── Brevo message panel overrides ───────────────────────────── */
+.footer-social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.footer-social-link {
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-social-link:hover { color: var(--cream); }
 #error-message.sib-form-message-panel,
 #success-message.sib-form-message-panel {
   background: transparent !important;
@@ -960,7 +975,7 @@ footer {
 
   <div class="hero-divider"></div>
 
-  <p class="email-note" style="opacity:0;animation:fadeUp 1s ease 1.1s forwards;">Founding Tasters receive a complimentary sample and 25% off their first three orders.</p>
+  <p class="email-note" style="opacity:0;animation:fadeUp 1s ease 1.1s forwards; font-size:0.85rem; letter-spacing:0.04em;">Rs. 199 per pouch &nbsp;·&nbsp; Launching soon &nbsp;·&nbsp; Founding Tasters receive a complimentary sample and 25% off their first three orders.</p>
 </section>
 
 <!-- NUTRITION STRIP -->
@@ -1107,7 +1122,7 @@ footer {
       <span class="faq-ico">+</span>
     </button>
     <div class="faq-ans">
-      <div class="faq-ans-inner">Rasa comes in a 250ml ready-to-heat retort pouch. <strong>Heat for 60 seconds. Pour. Drink.</strong> Works as a warming drink before dinner, a post-workout recovery drink, a mid-afternoon alternative to tea or coffee, or a base for soups and gravies. Shelf-stable at ambient temperature — no refrigeration needed until opened.</div>
+      <div class="faq-ans-inner">Rasa comes in a 250ml shelf-stable sealed pouch. <strong>Heat for 60 seconds. Pour. Drink.</strong> Works as a warming drink before dinner, a post-workout recovery drink, a mid-afternoon alternative to tea or coffee, or a base for soups and gravies. No refrigeration needed until opened.</div>
     </div>
   </div>
 
@@ -1127,7 +1142,27 @@ footer {
       <span class="faq-ico">+</span>
     </button>
     <div class="faq-ans">
-      <div class="faq-ans-inner">Founding Tasters receive a <strong>complimentary 100ml sample</strong> from our first batch and <strong>25% off their first three orders</strong> when we launch. We are building the first community of people who believe in what we are doing before we ask them to pay for it.</div>
+      <div class="faq-ans-inner">Founding Tasters receive a <strong>complimentary sample</strong> from our first batch and <strong>25% off their first three orders</strong> when we launch. We are building the first community of people who believe in what we are doing before we ask them to pay for it.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span class="faq-q">Why is apple cider vinegar in a bone broth?</span>
+      <span class="faq-ico">+</span>
+    </button>
+    <div class="faq-ans">
+      <div class="faq-ans-inner">Organic apple cider vinegar is added at the start of the simmer — not for flavour, but for function. The acetic acid in ACV helps draw minerals out of the bone matrix into the broth. Calcium, magnesium, phosphorus, and potassium are locked inside the bone structure. ACV acts as a mild acid that breaks down the bone matrix faster, releasing more minerals into the liquid during the 18-hour simmer. By the time Rasa is ready, the vinegar has cooked off completely — you will not taste it. What remains is a significantly more mineral-dense broth.</div>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-btn" onclick="toggleFaq(this)">
+      <span class="faq-q">How does every ingredient in Rasa follow the BrothVeda Standard?</span>
+      <span class="faq-ico">+</span>
+    </button>
+    <div class="faq-ans">
+      <div class="faq-ans-inner">Every ingredient in Rasa satisfies three verifiable truths before it earns a place in the recipe. <strong>Vedic Root</strong> — it must be cited in a named classical Ayurvedic text with a Sanskrit term. <strong>Scientific Proof</strong> — its benefit must be backed by a named peer-reviewed journal, year, sample size, and specific measured outcome. <strong>Product Truth</strong> — its exact dose must appear on the label, and every batch must be tested and published before the first order ships. Turmeric is cited in the Charaka Samhita and backed by clinical studies on curcumin bioavailability. Ginger appears in Ayurvedic texts as a digestive and anti-inflammatory agent and is supported by peer-reviewed evidence on gingerol. Black pepper is prescribed alongside turmeric in classical texts — and science confirms piperine increases curcumin absorption by up to 2,000%. If an ingredient cannot satisfy all three truths, it does not go in the pouch.</div>
     </div>
   </div>
 
@@ -1243,9 +1278,16 @@ footer {
     No Preservatives &nbsp;·&nbsp; Low Sodium &nbsp;·&nbsp; 18-Hour Slow Simmered<br>
     Batch Lab-Tested &nbsp;·&nbsp; 100% Traceable Ingredients
   </div>
-  <div class="footer-mfg">
-    Manufactured for: BrothVeda Pvt. Ltd.<br>
-    <span style="opacity:0.4;">brothveda.in</span>
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:12px;">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/brothveda" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+      <span style="color:rgba(200,168,94,0.3);">·</span>
+      <a href="https://www.linkedin.com/company/brothveda" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+    </div>
+    <div class="footer-mfg">
+      Manufactured for: BrothVeda Pvt. Ltd.<br>
+      <span style="opacity:0.4;">brothveda.in</span>
+    </div>
   </div>
 </footer>
 
