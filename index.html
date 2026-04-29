@@ -856,6 +856,82 @@ footer {
   .hero-rasa { font-size: 4.5rem; }
   .nutr-item { min-width: 60px; }
 }
+
+/* ── Thank you popup ─────────────────────────────────────────── */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(42,16,8,0.8);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.popup-overlay.active { display: flex; }
+.popup-box {
+  background: var(--cream);
+  max-width: 460px;
+  width: 100%;
+  padding: 52px 40px 40px;
+  text-align: center;
+  position: relative;
+  border-top: 4px solid var(--gold);
+  animation: fadeUp 0.4s ease;
+}
+.popup-close {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none; border: none;
+  font-size: 1.6rem;
+  color: var(--gold2);
+  cursor: pointer;
+  line-height: 1;
+  font-family: var(--f-rasa);
+}
+.popup-close:hover { color: var(--maroon); }
+.popup-gem { font-size: 1.4rem; color: var(--gold); margin-bottom: 14px; }
+.popup-title {
+  font-family: var(--f-rasa);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--maroon);
+  margin-bottom: 14px;
+}
+.popup-body {
+  font-family: var(--f-bv);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+.popup-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.popup-perk {
+  font-family: var(--f-bv);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold2);
+}
+.popup-btn {
+  padding: 13px 32px;
+  background: var(--maroon);
+  border: none;
+  color: var(--cream);
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.popup-btn:hover { background: var(--dark); }
 </style>
 </head>
 <body>
@@ -1144,7 +1220,22 @@ footer {
   </div>
 </section>
 
-<!-- HERO email form — simple notify me, separate from Founding Taster -->
+<!-- THANK YOU POPUP -->
+<div class="popup-overlay" id="thankYouPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()">×</button>
+    <div class="popup-gem">✦</div>
+    <h2 class="popup-title">Welcome.</h2>
+    <p class="popup-body">You are on the list. We will be in touch when the first batch is ready.</p>
+    <div class="popup-perks">
+      <span class="popup-perk">— Complimentary sample from our first batch</span>
+      <span class="popup-perk">— 25% off your first three orders</span>
+      <span class="popup-perk">— First to know when we launch</span>
+    </div>
+    <button class="popup-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand"><span style="color:var(--cream)">Broth</span><span style="color:var(--gold)">Veda</span></div>
@@ -1178,6 +1269,41 @@ footer {
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
 <script>
+// ── Intercept Brevo form — show popup instead of redirecting ──
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('sib-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('EMAIL').value.trim();
+      if (!email || !email.includes('@')) return;
+
+      // Submit to Brevo in the background
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+      }).catch(() => {});
+
+      // Show our popup immediately
+      document.getElementById('thankYouPopup').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+});
+
+function closePopup() {
+  document.getElementById('thankYouPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close popup on overlay click
+document.addEventListener('click', function(e) {
+  const overlay = document.getElementById('thankYouPopup');
+  if (e.target === overlay) closePopup();
+});
+
 // ── FAQ toggle ────────────────────────────────────────────────
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
