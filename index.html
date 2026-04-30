@@ -885,6 +885,24 @@ footer {
   .nutr-item { min-width: 60px; }
 }
 
+/* ── Lifestyle image grid ────────────────────────────────────── */
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 24px;
+}
+.lifestyle-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 640px) {
+  .lifestyle-grid { grid-template-columns: 1fr; gap: 4px; }
+}
+
 /* ── Thank you popup ─────────────────────────────────────────── */
 .popup-overlay {
   display: none;
@@ -1026,9 +1044,9 @@ footer {
   </p>
 </section>
 
-<!-- PRODUCT IMAGE -->
+<!-- PRODUCT IMAGE 1 — Pouch hero, full width after hero -->
 <section class="product-showcase">
-  <img src="brothveda_product.png" alt="RASA by BrothVeda — Clinically Formulated Chicken Bone Broth" class="product-img">
+  <img src="rasa_img1_pouch.png" alt="RASA by BrothVeda — Clinically Formulated Chicken Bone Broth" class="product-img">
 </section>
 
 <!-- CLINICAL BASIS -->
@@ -1049,6 +1067,12 @@ footer {
       </div>
     </div>
   </div>
+</section>
+
+<!-- LIFESTYLE IMAGES — cup and pour side by side -->
+<section class="lifestyle-grid reveal">
+  <img src="rasa_img2_cup.png" alt="RASA bone broth in a ceramic cup" class="lifestyle-img">
+  <img src="rasa_img3_pour.png" alt="RASA bone broth being poured" class="lifestyle-img">
 </section>
 
 <!-- THREE TRUTHS -->
@@ -1184,6 +1208,11 @@ footer {
     </div>
   </div>
 
+</section>
+
+<!-- HOW TO ENJOY IMAGE -->
+<section class="product-showcase reveal">
+  <img src="rasa_img4_howto.png" alt="How to enjoy RASA by BrothVeda" class="product-img">
 </section>
 
 <!-- FOUNDING TASTER -->
