@@ -354,6 +354,168 @@ nav {
 }
 .what-body strong { font-style: normal; font-weight: 600; color: var(--maroon); }
 
+/* ── What is Rasa split layout (Correction 1) ───────────────── */
+.what-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+}
+.what-split-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.what-split-text {
+  padding: 60px 48px;
+}
+@media (max-width: 768px) {
+  .what-split { grid-template-columns: 1fr; }
+  .what-split-text { padding: 48px 20px; }
+  .what-split-img { max-height: 400px; overflow: hidden; }
+}
+
+/* ── 18 Hour Simmer callout (Correction 4) ──────────────────── */
+.simmer-callout {
+  background: var(--maroon2);
+  padding: 64px 24px;
+  position: relative;
+}
+.simmer-callout::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold2), var(--gold), var(--gold2));
+}
+.simmer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+.simmer-number {
+  font-family: var(--f-rasa);
+  font-weight: 700;
+  font-size: clamp(8rem, 18vw, 14rem);
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+.simmer-right { flex: 1; }
+.simmer-hours {
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.simmer-label {
+  font-family: var(--f-rasa);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.simmer-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+.simmer-body {
+  font-family: var(--f-bv);
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(241,234,224,0.75);
+  line-height: 1.75;
+}
+@media (max-width: 640px) {
+  .simmer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .simmer-rule { margin: 16px auto; }
+  .simmer-number { font-size: 8rem; }
+}
+
+/* ── Health benefits (Correction 5) ─────────────────────────── */
+.benefits {
+  background: var(--cream2);
+  padding: 72px 24px;
+  border-top: 1px solid rgba(142,112,48,0.2);
+  border-bottom: 1px solid rgba(142,112,48,0.2);
+}
+.benefits-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  text-align: center;
+}
+.benefits-title {
+  font-family: var(--f-rasa);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--maroon);
+  margin-bottom: 48px;
+}
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-bottom: 32px;
+}
+.benefit-card {
+  background: var(--cream);
+  padding: 32px 20px;
+  text-align: center;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+.benefit-card:hover { border-top-color: var(--gold); }
+.benefit-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  opacity: 0.75;
+}
+.benefit-name {
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--maroon);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.benefit-desc {
+  font-family: var(--f-bv);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+  opacity: 0.8;
+}
+.benefits-footnote {
+  font-family: var(--f-bv);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gold2);
+}
+@media (max-width: 900px) {
+  .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .benefit-card { padding: 24px 14px; }
+}
+@media (max-width: 400px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Product showcase ────────────────────────────────────────── */
 .product-showcase {
   width: 100%;
@@ -1029,24 +1191,83 @@ footer {
   </div>
 </div>
 
-<!-- WHAT IS RASA -->
-<section class="what reveal">
-  <p class="section-eyebrow">What is Rasa?</p>
-  <div class="section-rule"></div>
-  <h2 class="what-title">India's first <em>clinically formulated</em><br>chicken bone broth.</h2>
-  <p class="what-body">
-    <strong>Standard chicken stock takes 1–2 hours and extracts flavour.</strong>
-    Rasa takes 18 hours and extracts something different — collagen, gelatin, and minerals
-    locked deep inside the bone matrix that a quick simmer cannot reach.
-    The result is a protein-rich liquid with compounds clinically studied for joint health,
-    gut lining repair, skin elasticity, and sleep quality.
-    Low calorie. Zero carbs. No shortcuts.
-  </p>
+<!-- WHAT IS RASA + POUCH IMAGE — Correction 1: Option A layout -->
+<section class="what-split reveal">
+  <div class="what-split-img">
+    <img src="rasa_img1_pouch.png" alt="RASA by BrothVeda — Clinically Formulated Chicken Bone Broth">
+  </div>
+  <div class="what-split-text">
+    <p class="section-eyebrow">What is Rasa?</p>
+    <div class="section-rule" style="margin:0 0 24px;"></div>
+    <h2 class="what-title">India's first <em>clinically formulated</em> chicken bone broth.</h2>
+    <p class="what-body">
+      <strong>Standard chicken stock takes 1–2 hours and extracts flavour.</strong>
+      Rasa takes 18 hours and extracts something different — collagen, gelatin, and minerals
+      locked deep inside the bone matrix that a quick simmer cannot reach.
+      The result is a protein-rich liquid with compounds clinically studied for joint health,
+      gut lining repair, skin, hair and nails, and immunity.
+      Low calorie. Zero carbs. No shortcuts.
+    </p>
+  </div>
 </section>
 
-<!-- PRODUCT IMAGE 1 — Pouch hero, full width after hero -->
-<section class="product-showcase">
-  <img src="rasa_img1_pouch.png" alt="RASA by BrothVeda — Clinically Formulated Chicken Bone Broth" class="product-img">
+<!-- HOW TO ENJOY — Correction 3: moved up to highlight convenience -->
+<section class="product-showcase reveal">
+  <img src="rasa_img4_howto.png" alt="How to enjoy RASA by BrothVeda" class="product-img">
+</section>
+
+<!-- 18 HOUR SIMMER CALLOUT — Correction 4 -->
+<section class="simmer-callout reveal">
+  <div class="simmer-inner">
+    <div class="simmer-number">18</div>
+    <div class="simmer-right">
+      <div class="simmer-hours">Hours</div>
+      <div class="simmer-label">Slow Simmered</div>
+      <div class="simmer-rule"></div>
+      <p class="simmer-body">Because collagen, gelatin, and minerals cannot be rushed. Standard stock takes 2 hours and extracts flavour. Rasa takes 18 and extracts nutrition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH BENEFITS — Correction 5 -->
+<section class="benefits reveal">
+  <div class="benefits-inner">
+    <p class="section-eyebrow" style="color:var(--gold);">What Rasa Does For You</p>
+    <h2 class="benefits-title">Five reasons to make it a daily habit.</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🛡</div>
+        <div class="benefit-name">General Health & Immunity</div>
+        <p class="benefit-desc">Amino acids and minerals that support your body's daily defence and recovery.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🦴</div>
+        <div class="benefit-name">Joint Health & Mobility</div>
+        <p class="benefit-desc">Collagen and glycine clinically studied for cartilage repair and joint support.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✨</div>
+        <div class="benefit-name">Skin, Hair & Nails</div>
+        <p class="benefit-desc">Bioavailable collagen that works from within — not on the surface.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💪</div>
+        <div class="benefit-name">Protein Without the Bulk</div>
+        <p class="benefit-desc">9g+ protein per serving. Zero carbs. Under 75 kcal. Nothing wasted.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🌿</div>
+        <div class="benefit-name">Gut Health & Digestion</div>
+        <p class="benefit-desc">Gelatin soothes and supports the gut lining naturally.</p>
+      </div>
+    </div>
+    <p class="benefits-footnote">Every benefit backed by peer-reviewed evidence. Every batch lab tested.</p>
+  </div>
+</section>
+
+<!-- CUP IMAGE — Correction 2: separated, placed after benefits -->
+<section class="product-showcase reveal">
+  <img src="rasa_img2_cup.png" alt="RASA bone broth in a ceramic cup" class="product-img" style="max-height:500px; object-fit:cover; object-position:center;">
 </section>
 
 <!-- CLINICAL BASIS -->
@@ -1069,10 +1290,9 @@ footer {
   </div>
 </section>
 
-<!-- LIFESTYLE IMAGES — cup and pour side by side -->
-<section class="lifestyle-grid reveal">
-  <img src="rasa_img2_cup.png" alt="RASA bone broth in a ceramic cup" class="lifestyle-img">
-  <img src="rasa_img3_pour.png" alt="RASA bone broth being poured" class="lifestyle-img">
+<!-- POUR IMAGE — Correction 2: separated, placed after clinical basis -->
+<section class="product-showcase reveal">
+  <img src="rasa_img3_pour.png" alt="RASA bone broth being poured" class="product-img" style="max-height:500px; object-fit:cover; object-position:center;">
 </section>
 
 <!-- THREE TRUTHS -->
@@ -1208,11 +1428,6 @@ footer {
     </div>
   </div>
 
-</section>
-
-<!-- HOW TO ENJOY IMAGE -->
-<section class="product-showcase reveal">
-  <img src="rasa_img4_howto.png" alt="How to enjoy RASA by BrothVeda" class="product-img">
 </section>
 
 <!-- FOUNDING TASTER -->
