@@ -375,7 +375,8 @@ nav {
 @media (max-width: 768px) {
   .what-split { grid-template-columns: 1fr; }
   .what-split-text { padding: 48px 20px; }
-  .what-split-img { max-height: 400px; overflow: hidden; }
+  .what-split-img { max-height: none; overflow: visible; }
+  .what-split-img img { width: 100%; height: auto; object-fit: contain; }
 }
 
 /* ── 18 Hour Simmer callout (Correction 4) ──────────────────── */
@@ -506,11 +507,20 @@ nav {
   color: var(--gold2);
 }
 @media (max-width: 900px) {
-  .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
-  .benefits-grid { grid-template-columns: 1fr 1fr; }
-  .benefit-card { padding: 24px 14px; }
+  .benefits-grid { grid-template-columns: 1fr; gap: 2px; }
+  .benefit-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 16px;
+    text-align: left;
+  }
+  .benefit-icon { font-size: 1.6rem; flex-shrink: 0; margin-bottom: 0; }
+  .benefit-name { font-size: 0.75rem; }
+  .benefit-desc { font-size: 0.9rem; }
 }
 @media (max-width: 400px) {
   .benefits-grid { grid-template-columns: 1fr; }
@@ -1241,7 +1251,7 @@ footer {
         <p class="benefit-desc">Amino acids and minerals that support your body's daily defence and recovery.</p>
       </div>
       <div class="benefit-card">
-        <div class="benefit-icon">🦴</div>
+        <div class="benefit-icon">🦵</div>
         <div class="benefit-name">Joint Health & Mobility</div>
         <p class="benefit-desc">Collagen and glycine clinically studied for cartilage repair and joint support.</p>
       </div>
