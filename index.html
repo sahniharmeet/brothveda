@@ -118,13 +118,13 @@ nav {
   min-height: 90vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   padding: 0;
   position: relative;
   overflow: hidden;
 }
 .hero-left {
-  padding: 80px 56px 80px 64px;
+  padding: 56px 56px 64px 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -142,36 +142,6 @@ nav {
   object-position: center top;
   display: block;
 }
-.hero-badge-overlay {
-  position: absolute;
-  bottom: 48px;
-  left: 40px;
-  background: rgba(241,234,224,0.95);
-  border: 1px solid rgba(200,168,94,0.4);
-  padding: 20px 28px;
-  backdrop-filter: blur(4px);
-}
-.hero-badge-num {
-  font-family: var(--f-rasa);
-  font-weight: 700;
-  font-size: 2.8rem;
-  color: var(--maroon);
-  line-height: 1;
-}
-.hero-badge-num sup {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: var(--gold2);
-  vertical-align: super;
-}
-.hero-badge-lbl {
-  font-family: var(--f-body);
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold2);
-  margin-top: 4px;
-}
 
 .coming-soon {
   font-family: var(--f-body);
@@ -179,52 +149,53 @@ nav {
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold2);
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   opacity: 0;
   animation: fadeUp 1s ease 0.2s forwards;
 }
 
+.hero-by-brothveda {
+  font-family: var(--f-bv);
+  font-style: italic;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  color: var(--maroon);
+  line-height: 1.1;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.4s forwards;
+  margin-bottom: 8px;
+}
+.hero-by-brothveda .by { color: rgba(60,32,16,0.4); font-size: 0.55em; display: block; margin-bottom: 4px; letter-spacing: 0.04em; }
+.hero-by-brothveda .broth-span { color: var(--text); }
+.hero-by-brothveda .veda-span  { color: var(--gold2); }
+
 .hero-rasa {
   font-family: var(--f-rasa);
   font-weight: 700;
-  font-size: clamp(5rem, 10vw, 8rem);
-  color: var(--maroon);
-  line-height: 0.9;
-  letter-spacing: 0.04em;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--gold2);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
   opacity: 0;
-  animation: fadeUp 1s ease 0.4s forwards;
-}
-
-.hero-sub-tag {
-  font-family: var(--f-bv);
-  font-style: italic;
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  color: var(--gold);
-  margin-top: 18px;
-  opacity: 0;
-  animation: fadeUp 1s ease 0.55s forwards;
-  line-height: 1.3;
+  animation: fadeUp 1s ease 0.5s forwards;
+  margin-bottom: 28px;
 }
 
 .hero-desc {
   font-family: var(--f-body);
   font-weight: 300;
-  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
   color: var(--text);
-  line-height: 1.8;
-  margin-top: 24px;
+  line-height: 1.85;
   opacity: 0;
-  animation: fadeUp 1s ease 0.7s forwards;
-  max-width: 420px;
-  opacity: 0;
-  animation: fadeUp 1s ease 0.7s forwards;
+  animation: fadeUp 1s ease 0.65s forwards;
+  max-width: 400px;
 }
 
 .hero-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 36px;
+  margin-top: 32px;
   padding: 16px 32px;
   background: var(--maroon);
   color: var(--cream);
@@ -236,7 +207,7 @@ nav {
   text-decoration: none;
   transition: background 0.25s;
   opacity: 0;
-  animation: fadeUp 1s ease 0.85s forwards;
+  animation: fadeUp 1s ease 0.8s forwards;
   width: fit-content;
 }
 .hero-cta:hover { background: var(--dark); }
@@ -245,22 +216,17 @@ nav {
 .hero-price-note {
   font-family: var(--f-bv);
   font-style: italic;
-  font-size: 0.95rem;
-  color: rgba(60,32,16,0.5);
+  font-size: 0.92rem;
+  color: rgba(60,32,16,0.45);
   margin-top: 14px;
   opacity: 0;
-  animation: fadeUp 1s ease 1s forwards;
+  animation: fadeUp 1s ease 0.95s forwards;
 }
 
 .hero-byline { display: none; }
-
-.hero-tagline {
-  font-family: var(--f-bv);
-  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-  color: var(--text);
-  margin-top: 8px;
-  letter-spacing: 0.04em;
-  opacity: 0;
+.hero-sub-tag { display: none; }
+.hero-tagline { display: none; }
+.hero-badge-overlay { display: none; }
   animation: fadeUp 1s ease 0.9s forwards;
 }
 
@@ -1371,20 +1337,33 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <p class="coming-soon">Coming Soon &nbsp;·&nbsp; Founding Tasters Open</p>
-    <h1 class="hero-rasa">RASA</h1>
-    <p class="hero-sub-tag">India's forgotten superfood. Reclaimed.</p>
-    <p class="hero-desc">An 18-hour slow-simmered chicken bone broth — clinically formulated, Ayurvedically rooted. Sip the protein your ancestors prescribed.</p>
-    <a href="#founding" class="hero-cta">Become a Founding Taster <span class="hero-cta-arrow">→</span></a>
-    <p class="hero-price-note">₹199 per pouch &nbsp;·&nbsp; Launching soon</p>
-  </div>
   <div class="hero-right">
     <img src="rasa_img1_pouch.png" alt="RASA by BrothVeda — Clinically Formulated Chicken Bone Broth">
-    <div class="hero-badge-overlay">
-      <div class="hero-badge-num">18<sup>hr</sup></div>
-      <div class="hero-badge-lbl">Slow Simmered</div>
+  </div>
+  <div class="hero-left">
+    <p class="coming-soon">Coming Soon &nbsp;·&nbsp; Founding Tasters Open</p>
+    <p class="section-eyebrow" style="color:var(--gold2); margin-bottom:16px;">What is Rasa?</p>
+    <h2 class="what-title" style="margin-bottom:20px;">India's first <em>clinically formulated</em> chicken bone broth.</h2>
+    <p class="hero-desc">Standard chicken stock takes one to two hours and extracts flavour. Rasa takes <strong style="color:var(--gold2); font-weight:500;">eighteen</strong> — and extracts something different. Collagen. Gelatin. Bone-bound minerals locked deep in the matrix that a quick simmer cannot reach.</p>
+    <div class="story-blockquote" style="margin:20px 0;">
+      <p>Low calorie. Zero carbs. No shortcuts.</p>
     </div>
+    <div class="story-stats" style="margin-top:0; padding-top:24px;">
+      <div class="story-stat">
+        <div class="story-stat-val">18hr</div>
+        <div class="story-stat-lbl">Simmer Time</div>
+      </div>
+      <div class="story-stat">
+        <div class="story-stat-val">52</div>
+        <div class="story-stat-lbl">Amino Acids</div>
+      </div>
+      <div class="story-stat">
+        <div class="story-stat-val">0</div>
+        <div class="story-stat-lbl">Shortcuts</div>
+      </div>
+    </div>
+    <a href="#founding" class="hero-cta" style="margin-top:28px;">Become a Founding Taster <span class="hero-cta-arrow">→</span></a>
+    <p class="hero-price-note">₹199 per pouch &nbsp;·&nbsp; Launching soon</p>
   </div>
 </section>
 
@@ -1419,46 +1398,6 @@ footer {
     <span class="marquee-sep">◆</span>
   </div>
 </div>
-
-<!-- STORY — WHAT IS RASA -->
-<section class="what-split reveal" id="story">
-  <div class="what-split-img">
-    <img src="rasa_img3_pour.png" alt="RASA bone broth being poured — golden, viscous, alive with collagen">
-    <p class="story-img-caption" style="padding:12px 20px; background:var(--cream);">The pour — golden, viscous, alive with collagen.</p>
-  </div>
-  <div class="what-split-text">
-    <p class="section-eyebrow">What is Rasa?</p>
-    <h2 class="what-title">India's first <em>clinically formulated</em> chicken bone broth.</h2>
-    <p class="what-body">
-      <em style="font-style:italic; color:rgba(60,32,16,0.6);">Standard chicken stock</em> takes one to two hours and extracts flavour. Rasa takes <strong style="color:var(--gold2); font-style:normal;">eighteen</strong> — and extracts something different.
-    </p>
-    <p class="what-body" style="margin-top:16px;">
-      Collagen. Gelatin. Bone-bound minerals. Compounds locked deep in the matrix that a quick simmer cannot reach. The result is a protein-rich liquid clinically studied for joint health, gut lining repair, skin, hair, nails, and immunity.
-    </p>
-    <div class="story-blockquote">
-      <p>Low calorie. Zero carbs. No shortcuts.</p>
-    </div>
-    <div class="story-stats">
-      <div class="story-stat">
-        <div class="story-stat-val">18hr</div>
-        <div class="story-stat-lbl">Simmer Time</div>
-      </div>
-      <div class="story-stat">
-        <div class="story-stat-val">52</div>
-        <div class="story-stat-lbl">Amino Acids</div>
-      </div>
-      <div class="story-stat">
-        <div class="story-stat-val">0</div>
-        <div class="story-stat-lbl">Shortcuts</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW TO ENJOY — Correction 3: moved up to highlight convenience -->
-<section class="product-showcase reveal">
-  <img src="rasa_img4_howto.png" alt="How to enjoy RASA by BrothVeda" class="product-img">
-</section>
 
 <!-- 18 HOUR SIMMER CALLOUT — Correction 4 -->
 <section class="simmer-callout reveal">
